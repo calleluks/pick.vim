@@ -2,6 +2,9 @@
 
 Functions for using [pick] from within Vim.
 
+***Please note:*** pick requires a fully functional terminal to run and can
+therefore not be run from within gvim or MacVim.
+
 [pick]: https://github.com/thoughtbot/pick/
 
 ## Installation
