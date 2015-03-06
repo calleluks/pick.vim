@@ -1,14 +1,15 @@
 function! PickCommand(choice_command, pick_args, vim_command)
   try
     let selection = system(a:choice_command . " | pick" . a:pick_args)
+    redraw!
     if v:shell_error == 0
       exec a:vim_command . " " . selection
     endif
   catch /Vim:Interrupt/
     " Swallow the ^C so that the redraw below happens; otherwise there will be
     " leftovers from pick on the screen
+    redraw!
   endtry
-  redraw!
 endfunction
 
 function! PickFile()
