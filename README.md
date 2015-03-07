@@ -55,7 +55,7 @@ For example, you could implement `PickFile()` like this:
 call PickCommand("find * -type f", "", ":edit")
 ```
 
-### Mapping keys
+### Configuration
 
 Add your preferred key mappings to your `.vimrc` file:
 
@@ -65,6 +65,12 @@ map <Leader>s :call PickFileSplit()<CR>
 map <Leader>v :call PickFileVerticalSplit()<CR>
 map <Leader>t :call PickFileTab()<CR>
 map <Leader>b :call PickBuffer()<CR>
+```
+
+The name of the pick executable can be configured with:
+
+```viml
+let g:pick_executable = "pick"
 ```
 
 ## Copyright

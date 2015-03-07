@@ -1,6 +1,10 @@
+if !exists("g:pick_executable")
+  let g:pick_executable = "pick"
+endif
+
 function! PickCommand(choice_command, pick_args, vim_command)
   try
-    let selection = system(a:choice_command . " | pick" . a:pick_args)
+    let selection = system(a:choice_command . " | " . g:pick_executable . " " . a:pick_args)
     redraw!
     if v:shell_error == 0
       try
