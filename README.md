@@ -60,11 +60,11 @@ call PickCommand("find * -type f", "", ":edit")
 Add your preferred key mappings to your `.vimrc` file:
 
 ```viml
-map <Leader>p :call PickFile()<CR>
-map <Leader>s :call PickFileSplit()<CR>
-map <Leader>v :call PickFileVerticalSplit()<CR>
-map <Leader>t :call PickFileTab()<CR>
-map <Leader>b :call PickBuffer()<CR>
+nnoremap <Leader>p :call PickFile()<CR>
+nnoremap <Leader>s :call PickFileSplit()<CR>
+nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
+nnoremap <Leader>t :call PickFileTab()<CR>
+nnoremap <Leader>b :call PickBuffer()<CR>
 ```
 
 ## Copyright
