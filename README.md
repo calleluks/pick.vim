@@ -73,6 +73,12 @@ The name of the pick executable can be configured with:
 let g:pick_executable = "pick"
 ```
 
+The name of the pick executable can be configured with:
+
+```viml
+let g:pick_executable = "pick"
+```
+
 ## Copyright
 
 Copyright (c) 2014 Calle Erlandsson & thoughtbot, Inc.
