@@ -44,6 +44,10 @@ Pick a file to edit in a new tab.
 
 Pick a buffer to edit.
 
+### `PickTag()`
+
+Pick a tag to jump to.
+
 ### `PickCommand(choice_command, pick_args, vim_command)`
 
 Run the `choice_command` in from the shell and pipe the results to pick run with
@@ -65,6 +69,7 @@ nnoremap <Leader>s :call PickFileSplit()<CR>
 nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
 nnoremap <Leader>t :call PickFileTab()<CR>
 nnoremap <Leader>b :call PickBuffer()<CR>
+nnoremap <Leader>] :call PickTag()<CR>
 ```
 
 The name of the pick executable can be configured with:

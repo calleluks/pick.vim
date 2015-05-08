@@ -20,23 +20,27 @@ function! PickCommand(choice_command, pick_args, vim_command)
 endfunction
 
 function! PickFile()
-    call PickCommand(s:FileListCommand(), "", ":edit")
+  call PickCommand(s:FileListCommand(), "", ":edit")
 endfunction
 
 function! PickFileVerticalSplit()
-    call PickCommand(s:FileListCommand(), "", ":vsplit")
+  call PickCommand(s:FileListCommand(), "", ":vsplit")
 endfunction
 
 function! PickFileSplit()
-    call PickCommand(s:FileListCommand(), "", ":split")
+  call PickCommand(s:FileListCommand(), "", ":split")
 endfunction
 
 function! PickFileTab()
-    call PickCommand(s:FileListCommand(), "", ":tabedit")
+  call PickCommand(s:FileListCommand(), "", ":tabedit")
 endfunction
 
 function! PickBuffer()
-    call PickCommand(s:BufferListCommand(), "", ":buffer")
+  call PickCommand(s:BufferListCommand(), "", ":buffer")
+endfunction
+
+function! PickTag()
+  call PickCommand(s:TagCommand(), "", ":tag")
 endfunction
 
 function! s:FileListCommand()
@@ -67,4 +71,10 @@ function! s:BufferListCommand()
   let bufnrs = filter(range(1, bufnr("$")), 'buflisted(v:val)')
   let buffers = map(bufnrs, 'bufname(v:val)')
   return 'echo "' . join(buffers, "\n") . '"'
+endfunction
+
+function! s:TagCommand()
+  let l:tag_files = join(split(&tags, ","), " ")
+
+  return "cat " . l:tag_files . " 2> /dev/null | awk -F$'\t' '{print $1}' | sort -u | grep -v '^!'"
 endfunction
