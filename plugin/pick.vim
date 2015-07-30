@@ -74,7 +74,7 @@ function! s:BufferListCommand()
 endfunction
 
 function! s:TagCommand()
-  let l:tag_files = join(split(&tags, ","), " ")
+  let l:tag_files = join(tagfiles(), " ")
 
   return "cat " . l:tag_files . " 2> /dev/null | awk -F$'\t' '{print $1}' | sort -u | grep -v '^!'"
 endfunction
