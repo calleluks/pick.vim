@@ -46,25 +46,21 @@ endfunction
 function! s:FileListCommand()
   let l:command = ""
 
-  if isdirectory(".git")
+  if s:IsGitRepo()
     let l:command = s:GitListCommand(".")
-  endif
-
-  if strlen(l:command) < 1
-    let l:output = system("git rev-parse --show-toplevel")
-    if v:shell_error == 0
-      let l:output = substitute(l:output, "\\n", "", "")
-      let l:command = s:GitListCommand(l:output)
-    else
-      let l:command = "find * -type f -o -type l"
-    endif
+  else
+    let l:command = "find * -type f"
   endif
 
   return l:command
 endfunction
 
-function! s:GitListCommand(directory)
-  return "git ls-files " . a:directory . " --cached --exclude-standard --others"
+function! s:GitListCommand(file)
+  return "git ls-files " . a:file . " --cached --exclude-standard --others"
+endfunction
+
+function! s:IsGitRepo()
+  return system("git ls-files " . expand("%") . " --cached --exclude-standard --others --error-unmatch 2> /dev/null ; echo $?") == 0
 endfunction
 
 function! s:BufferListCommand()
