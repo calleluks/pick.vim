@@ -1,5 +1,5 @@
 if !exists("g:pick_executable")
-  let g:pick_executable = "pick"
+  let g:pick_executable = "pick -X"
 endif
 
 function! PickCommand(choice_command, pick_args, vim_command)
