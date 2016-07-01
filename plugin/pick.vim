@@ -40,11 +40,15 @@ function! PickFileTab()
 endfunction
 
 function! PickBuffer()
-  call PickCommand(s:BufferListCommand(), "", ":buffer")
+  call PickBufferCommand(":buffer")
 endfunction
 
 function! PickTag()
   call PickCommand(s:TagCommand(), "", ":tag")
+endfunction
+
+function! PickBufferCommand(vim_command)
+  call PickCommand(s:BufferListCommand(), "", a:vim_command)
 endfunction
 
 function! s:FileListCommand()
