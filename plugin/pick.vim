@@ -2,6 +2,10 @@ if !exists("g:pick_executable")
   let g:pick_executable = "pick -X"
 endif
 
+if exists("g:pick_height")
+  let g:pick_executable = "env LINES=" . g:pick_height . " " . g:pick_executable
+endif
+
 function! PickCommand(choice_command, pick_args, vim_command)
   try
     let selection = system(a:choice_command . " | " . g:pick_executable . " " . a:pick_args)

@@ -78,6 +78,12 @@ The name of the pick executable can be configured with:
 let g:pick_executable = "pick"
 ```
 
+The maximum number of lines used when drawing the pick interface can be limited:
+
+```viml
+let g:pick_height = 10
+```
+
 ## Copyright
 
 Copyright (c) 2014 Calle Erlandsson & thoughtbot, Inc.
