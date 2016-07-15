@@ -8,11 +8,11 @@ endif
 
 function! PickCommand(choice_command, pick_args, vim_command)
   try
-    let selection = system(a:choice_command . " | " . g:pick_executable . " " . a:pick_args)
+    let selection = systemlist(a:choice_command . " | " . g:pick_executable . " " . a:pick_args)[0]
     redraw!
     if v:shell_error == 0
       try
-        exec a:vim_command . " " . selection
+        exec a:vim_command . " " . fnameescape(selection)
       catch /E325/
       endtry
     endif
