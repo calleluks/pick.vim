@@ -8,7 +8,12 @@ endif
 
 function! PickCommand(choice_command, pick_args, vim_command)
   try
-    let selection = systemlist(a:choice_command . " | " . g:pick_executable . " " . a:pick_args)[0]
+    let pick_command = a:choice_command . " | " . g:pick_executable . " " . a:pick_args
+    if exists("*systemlist")
+      let selection = systemlist(pick_command)[0]
+    else
+      let selection = substitute(system(pick_command), '\n$', '', '')
+    endif
     redraw!
     if v:shell_error == 0
       try
