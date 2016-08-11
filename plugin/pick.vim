@@ -57,15 +57,15 @@ function! PickBufferCommand(vim_command)
 endfunction
 
 function! s:FileListCommand()
-  let l:command = ""
+  let command = ""
 
   if s:IsGitRepo()
-    let l:command = s:GitListCommand(".")
+    let command = s:GitListCommand(".")
   else
-    let l:command = "find * -type f"
+    let command = "find * -type f"
   endif
 
-  return l:command
+  return command
 endfunction
 
 function! s:GitListCommand(file)
@@ -83,7 +83,7 @@ function! s:BufferListCommand()
 endfunction
 
 function! s:TagCommand()
-  let l:tag_files = join(tagfiles(), " ")
+  let tag_files = join(tagfiles(), " ")
 
-  return "cat " . l:tag_files . " 2> /dev/null | awk -F$'\t' '{print $1}' | sort -u | grep -v '^!'"
+  return "cat " . tag_files . " 2> /dev/null | awk -F$'\t' '{print $1}' | sort -u | grep -v '^!'"
 endfunction
