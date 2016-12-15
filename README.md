@@ -5,14 +5,14 @@ Functions for using [pick] from within Vim.
 ***Please note:*** pick requires a fully functional terminal to run therefore
 cannot be run from within gvim or MacVim.
 
-[pick]: https://github.com/thoughtbot/pick/
+[pick]: https://github.com/calleerlandsson/pick/
 
 ## Installation
 
 Recommended installation with [Vundle]:
 
 ```viml
-Plugin 'thoughtbot/pick.vim'
+Plugin 'calleerlandsson/pick.vim'
 ```
 
 [Vundle]: https://github.com/gmarik/Vundle.vim/
@@ -86,6 +86,4 @@ let g:pick_height = 10
 
 ## Copyright
 
-Copyright (c) 2014 Calle Erlandsson & thoughtbot, Inc.
-
-Lead by Calle Erlandsson & thoughtbot, Inc.
+Copyright (c) 2016 Calle Erlandsson, Teo Ljungberg & thoughtbot.
