@@ -6,7 +6,7 @@ if exists("g:pick_height")
   let g:pick_executable = "env LINES=" . g:pick_height . " " . g:pick_executable
 endif
 
-function! PickCommand(choice_command, pick_args, vim_command)
+function! PickCommand(choice_command, pick_args, vim_command, escapable_output)
   try
     let pick_command = a:choice_command . " | " . g:pick_executable . " " . a:pick_args
     if exists("*systemlist")
@@ -15,9 +15,16 @@ function! PickCommand(choice_command, pick_args, vim_command)
       let selection = substitute(system(pick_command), '\n$', '', '')
     endif
     redraw!
+
+    if a:escapable_output > 0
+      let escaped_selection = fnameescape(selection)
+    else
+      let escaped_selection = selection
+    endif
+
     if v:shell_error == 0
       try
-        exec a:vim_command . " " . fnameescape(selection)
+        exec a:vim_command . " " . escaped_selection
       catch /E325/
       endtry
     endif
@@ -29,19 +36,19 @@ function! PickCommand(choice_command, pick_args, vim_command)
 endfunction
 
 function! PickFile()
-  call PickCommand(s:FileListCommand(), "", ":edit")
+  call PickCommand(s:FileListCommand(), "", ":edit", 1)
 endfunction
 
 function! PickFileVerticalSplit()
-  call PickCommand(s:FileListCommand(), "", ":vsplit")
+  call PickCommand(s:FileListCommand(), "", ":vsplit", 1)
 endfunction
 
 function! PickFileSplit()
-  call PickCommand(s:FileListCommand(), "", ":split")
+  call PickCommand(s:FileListCommand(), "", ":split", 1)
 endfunction
 
 function! PickFileTab()
-  call PickCommand(s:FileListCommand(), "", ":tabedit")
+  call PickCommand(s:FileListCommand(), "", ":tabedit", 1)
 endfunction
 
 function! PickBuffer()
@@ -49,11 +56,11 @@ function! PickBuffer()
 endfunction
 
 function! PickTag()
-  call PickCommand(s:TagCommand(), "", ":tag")
+  call PickCommand(s:TagCommand(), "", ":tag", 0)
 endfunction
 
 function! PickBufferCommand(vim_command)
-  call PickCommand(s:BufferListCommand(), "", a:vim_command)
+  call PickCommand(s:BufferListCommand(), "", a:vim_command, 1)
 endfunction
 
 function! s:FileListCommand()
