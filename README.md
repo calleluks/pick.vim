@@ -44,6 +44,14 @@ Pick a file to edit in a new tab.
 
 Pick a buffer to edit.
 
+### `PickSplitFromBuffers`
+
+Pick a file to edit from buffers in a new split.
+
+### `PickVsplitFromBuffers`
+
+Pick a file to edit from buffers in a new vertical split.
+
 ### `PickTag()`
 
 Pick a tag to jump to.

@@ -55,6 +55,14 @@ function! PickBuffer()
   call PickBufferCommand(":buffer")
 endfunction
 
+function! PickSplitFromBuffers()
+  call PickCommand(s:BufferListCommand(), "", ":split")
+endfunction
+
+function! PickVsplitFromBuffers()
+  call PickCommand(s:BufferListCommand(), "", ":vsplit")
+endfunction
+
 function! PickTag()
   call PickCommand(s:TagCommand(), "", ":tag", 0)
 endfunction
