@@ -42,7 +42,7 @@ Pick a file to edit in a new tab.
 
 ### `PickBuffer()`
 
-Pick a buffer to edit.
+Pick a buffer to edit. `PickBufferSplit`, `PickBufferVerticalSplit` and `PickBufferTab` are also available.
 
 ### `PickTag()`
 

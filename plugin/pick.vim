@@ -55,6 +55,18 @@ function! PickBuffer()
   call PickBufferCommand(":buffer")
 endfunction
 
+function! PickBufferVerticalSplit()
+  call PickCommand(s:BufferListCommand(), "", ":vert sbuffer")
+endfunction
+
+function! PickBufferSplit()
+  call PickCommand(s:BufferListCommand(), "", ":sbuffer")
+endfunction
+
+function! PickBufferTab()
+  call PickCommand(s:BufferListCommand(), "", ":tab sbuffer")
+endfunction
+
 function! PickTag()
   call PickCommand(s:TagCommand(), "", ":tag", 0)
 endfunction
