@@ -1,5 +1,5 @@
 if !exists("g:pick_executable")
-  let g:pick_executable = "pick -X"
+  let g:pick_executable = "pick -KX"
 endif
 
 if exists("g:pick_height")
