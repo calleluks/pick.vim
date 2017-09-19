@@ -75,8 +75,12 @@ nnoremap <Leader>] :call PickTag()<CR>
 The name of the pick executable can be configured with:
 
 ```viml
-let g:pick_executable = "pick"
+let g:pick_executable = "pick -K"
 ```
+
+The `-K` is useful when running `pick(1)` from within another interactive
+program (like `vim(1)`) which does not re-enable keyboard transmit mode after
+executing an external program.
 
 The maximum number of lines used when drawing the pick interface can be limited:
 
@@ -86,4 +90,4 @@ let g:pick_height = 10
 
 ## Copyright
 
-Copyright (c) 2016 Calle Erlandsson, Teo Ljungberg & thoughtbot.
+Copyright (c) 2017 Calle Erlandsson, Teo Ljungberg & thoughtbot.
