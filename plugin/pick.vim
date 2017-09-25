@@ -10,11 +10,15 @@ function! PickCommand(choice_command, pick_args, vim_command, escapable_output)
   try
     let pick_command = a:choice_command . " | " . g:pick_executable . " " . a:pick_args
     if exists("*systemlist")
-      let selection = systemlist(pick_command)[0]
+      let files = systemlist(pick_command)
     else
-      let selection = substitute(system(pick_command), '\n$', '', '')
+      let files = split(system(pick_command), "\n")
     endif
     redraw!
+    if v:shell_error != 0 || len(files) == 0
+      return
+    endif
+    let selection = files[0]
 
     if a:escapable_output > 0
       let escaped_selection = fnameescape(selection)
@@ -22,12 +26,10 @@ function! PickCommand(choice_command, pick_args, vim_command, escapable_output)
       let escaped_selection = selection
     endif
 
-    if v:shell_error == 0
-      try
-        exec a:vim_command . " " . escaped_selection
-      catch /E325/
-      endtry
-    endif
+    try
+      exec a:vim_command . " " . escaped_selection
+    catch /E325/
+    endtry
   catch /Vim:Interrupt/
     " Swallow the ^C so that the redraw below happens; otherwise there will be
     " leftovers from pick on the screen
