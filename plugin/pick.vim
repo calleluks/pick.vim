@@ -61,6 +61,10 @@ function! PickTag()
   call PickCommand(s:TagCommand(), "", ":tag", 0)
 endfunction
 
+function! PickSplitTag()
+  call PickCommand(s:TagCommand(), "", ":stag", 0)
+endfunction
+
 function! PickBufferCommand(vim_command)
   call PickCommand(s:BufferListCommand(), "", a:vim_command, 1)
 endfunction

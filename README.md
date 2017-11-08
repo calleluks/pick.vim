@@ -46,7 +46,11 @@ Pick a buffer to edit.
 
 ### `PickTag()`
 
-Pick a tag to jump to.
+Pick a tag to jump to, open it with `:tag`
+
+### `PickSplitTag()`
+
+Pick a tag to jump to, open it with `:stag`
 
 ### `PickCommand(choice_command, pick_args, vim_command)`
 
