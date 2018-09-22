@@ -52,7 +52,7 @@ Pick a tag to jump to, open it with `:tag`
 
 Pick a tag to jump to, open it with `:stag`
 
-### `PickCommand(choice_command, pick_args, vim_command)`
+### `PickCommand(choice_command, pick_args, vim_command, escapable_output)`
 
 Run the `choice_command` in from the shell and pipe the results to pick run with
 `pick_args` and call the `vim_command` with the selected choice.
@@ -60,7 +60,7 @@ Run the `choice_command` in from the shell and pipe the results to pick run with
 For example, you could implement `PickFile()` like this:
 
 ```viml
-call PickCommand("find * -type f", "", ":edit")
+call PickCommand("find * -type f", "", ":edit", 1)
 ```
 
 ### Configuration
